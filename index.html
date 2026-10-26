@@ -1,0 +1,627 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#050914">
+  <meta name="description" content="AFEONA THE MOTAMRD - منصة عربية للتوعية بالأمن السيبراني واكتشاف الروابط المشبوهة.">
+  <title>AFEONA THE MOTAMRD | Cyber Security</title>
+
+  <style>
+    :root {
+      --bg: #050914;
+      --panel: #0b1425;
+      --panel2: #0e1b30;
+      --blue: #168cff;
+      --cyan: #00e5ff;
+      --text: #edf5ff;
+      --muted: #9aaec6;
+      --border: rgba(60, 155, 255, .2);
+      --green: #48e6a0;
+      --red: #ff657a;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 80% 0%, rgba(0, 108, 255, .16), transparent 42%),
+        radial-gradient(ellipse at 0% 45%, rgba(0, 229, 255, .06), transparent 35%),
+        var(--bg);
+      color: var(--text);
+      font-family: Tahoma, Arial, sans-serif;
+      line-height: 1.8;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, input { font: inherit; }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(5, 9, 20, .9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      color: var(--cyan);
+      font-weight: 900;
+      letter-spacing: 1px;
+      font-size: 18px;
+      direction: ltr;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .nav-links a:hover { color: var(--cyan); }
+
+    .hero {
+      min-height: 480px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 75px 0 65px;
+    }
+
+    .tag {
+      display: inline-block;
+      border: 1px solid var(--border);
+      background: rgba(22, 140, 255, .08);
+      color: var(--cyan);
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 12px;
+    }
+
+    h1 {
+      direction: ltr;
+      font-size: clamp(28px, 6vw, 55px);
+      line-height: 1.3;
+      margin: 20px 0 8px;
+      font-weight: 900;
+      text-shadow: 0 0 30px rgba(22, 140, 255, .24);
+    }
+
+    h1 span {
+      color: var(--cyan);
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: var(--muted);
+      margin: 12px auto 24px;
+      font-size: 15px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      padding: 11px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      color: white;
+      background: var(--panel2);
+      transition: .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--cyan);
+    }
+
+    .btn-primary {
+      color: #00101b;
+      background: linear-gradient(110deg, var(--cyan), #398cff);
+      font-weight: bold;
+      border: 0;
+    }
+
+    section { padding: 45px 0; }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 7px;
+      font-size: 26px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      padding: 22px;
+      background: linear-gradient(145deg, rgba(14, 27, 48, .95), rgba(7, 15, 29, .95));
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: .25s;
+    }
+
+    .card:hover {
+      border-color: rgba(0, 229, 255, .65);
+      transform: translateY(-3px);
+    }
+
+    .card-icon {
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .card h3 { margin: 0 0 8px; font-size: 17px; }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .tool-panel {
+      max-width: 800px;
+      margin: auto;
+      padding: 24px;
+      background: rgba(11, 20, 37, .92);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    .tool-panel h3 { margin-top: 0; }
+
+    .field {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+    }
+
+    input[type="url"] {
+      flex: 1;
+      min-width: 0;
+      background: #050b17;
+      color: white;
+      border: 1px solid #263b57;
+      border-radius: 10px;
+      padding: 12px;
+      direction: ltr;
+      text-align: left;
+      outline: none;
+    }
+
+    input:focus { border-color: var(--cyan); }
+
+    .hint {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    #result {
+      display: none;
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #071321;
+      border: 1px solid var(--border);
+      overflow-wrap: anywhere;
+    }
+
+    #result h4 { margin: 0 0 8px; }
+
+    #result ul { padding-right: 22px; }
+
+    .safe { color: var(--green); }
+    .warning { color: #ffc76a; }
+    .danger { color: var(--red); }
+
+    .quiz-question {
+      padding: 15px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quiz-question:last-child { border-bottom: 0; }
+
+    .quiz-question p { font-weight: bold; margin: 0 0 10px; }
+
+    .quiz-question label {
+      display: block;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px 0;
+      font-size: 14px;
+    }
+
+    .quiz-question input { accent-color: var(--cyan); }
+
+    #quizResult {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .notice {
+      border-right: 3px solid var(--cyan);
+      background: rgba(0, 229, 255, .05);
+      color: var(--muted);
+      padding: 13px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-top: 18px;
+    }
+
+    footer {
+      margin-top: 35px;
+      border-top: 1px solid var(--border);
+      padding: 30px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    footer strong { color: var(--cyan); }
+
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav-links { gap: 10px; font-size: 11px; }
+      .brand { font-size: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      nav { flex-wrap: wrap; padding: 12px 0; }
+      .nav-links { width: 100%; justify-content: space-between; }
+      .grid { grid-template-columns: 1fr; }
+      .hero { min-height: 400px; padding: 55px 0; }
+      .field { flex-direction: column; }
+      .field .btn { width: 100%; }
+      .tool-panel { padding: 17px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a class="brand" href="#home">AFEONA // MOTAMRD</a>
+        <div class="nav-links">
+          <a href="#learn">التوعية</a>
+          <a href="#scanner">فاحص الروابط</a>
+          <a href="#quiz">اختبر نفسك</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container" id="home">
+      <span class="tag">CYBER SECURITY • DIGITAL AWARENESS</span>
+      <h1>AFEONA <span>THE MOTAMRD</span></h1>
+      <h2>خليك أذكى من الهجمات الرقمية.</h2>
+      <p>
+        اتعلم تحمي حساباتك، وتفهم أساليب التصيد الإلكتروني،
+        وتتعرف على العلامات اللي ممكن تكشف المواقع المشبوهة.
+      </p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#scanner">افحص رابطًا</a>
+        <a class="btn" href="#learn">ابدأ التعلّم</a>
+      </div>
+    </section>
+
+    <section id="learn">
+      <div class="container">
+        <div class="section-heading">
+          <h2>مركز التوعية الرقمية</h2>
+          <p>خطوات بسيطة تساعدك تحافظ على أمانك على الإنترنت.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="card-icon">🎣</div>
+            <h3>التصيد الإلكتروني</h3>
+            <p>خلي بالك من الرسائل المستعجلة، والجوائز الوهمية، والروابط اللي تطلب منك تسجيل الدخول بشكل مفاجئ.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🔗</div>
+            <h3>فهم الروابط</h3>
+            <p>راجع اسم النطاق الحقيقي، وانتبه للأخطاء الإملائية والحروف المتشابهة وأسماء المواقع المقلدة.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🔐</div>
+            <h3>حماية الحسابات</h3>
+            <p>استخدم كلمة مرور مختلفة لكل حساب، وفعّل المصادقة الثنائية، ولا تشارك رموز التحقق مع أحد.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🛡️</div>
+            <h3>الخصوصية الرقمية</h3>
+            <p>قلّل البيانات الشخصية المنشورة، وراجع أذونات التطبيقات وإعدادات الخصوصية باستمرار.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">📱</div>
+            <h3>أمان الموبايل</h3>
+            <p>نزّل التطبيقات من مصادر موثوقة، وحدّث نظامك، وتجنّب ملفات APK مجهولة المصدر.</p>
+          </article>
+
+          <article class="card">
+            <div class="card-icon">🧠</div>
+            <h3>تحقّق قبل ما تضغط</h3>
+            <p>لو وصلك رابط من بنك أو خدمة معروفة، افتح التطبيق الرسمي أو اكتب عنوان الموقع بنفسك بدل الضغط على الرابط.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="scanner">
+      <div class="container">
+        <div class="section-heading">
+          <h2>🔎 فاحص مؤشرات الروابط</h2>
+          <p>تحليل مبدئي لشكل الرابط داخل متصفحك.</p>
+        </div>
+
+        <div class="tool-panel">
+          <h3>افحص رابطًا مشكوكًا فيه</h3>
+          <p class="hint">أدخل الرابط كاملًا، مثل https://example.com</p>
+
+          <form id="scanForm">
+            <div class="field">
+              <input
+                id="urlInput"
+                type="url"
+                placeholder="https://example.com"
+                autocomplete="off"
+                spellcheck="false"
+                required
+                aria-label="الرابط المراد فحصه"
+              >
+              <button class="btn btn-primary" type="submit">تحليل الرابط</button>
+            </div>
+          </form>
+
+          <div id="result" aria-live="polite"></div>
+
+          <div class="notice">
+            مهم: الفحص محلي ولا يرسل الرابط إلى خادم خارجي.
+            النتيجة تقديرية؛ قد يكون الرابط الضار شكله طبيعيًا،
+            وقد يكون الرابط الآمن غير مألوف. لا تدخل بياناتك اعتمادًا على هذه النتيجة وحدها.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="quiz">
+      <div class="container">
+        <div class="section-heading">
+          <h2>🎯 اختبر معلوماتك</h2>
+          <p>أربع أسئلة سريعة في الأمن الرقمي.</p>
+        </div>
+
+        <div class="tool-panel">
+          <form id="quizForm">
+            <div class="quiz-question">
+              <p>1. وصلك رابط بيقول إن حسابك هيتقفل خلال 5 دقائق. تعمل إيه؟</p>
+              <label><input type="radio" name="q1" value="0"> أضغط فورًا عشان ألحق الحساب.</label>
+              <label><input type="radio" name="q1" value="1"> أفتح التطبيق الرسمي وأتحقق من التنبيه.</label>
+            </div>
+
+            <div class="quiz-question">
+              <p>2. وجود HTTPS معناه إن الموقع مضمون؟</p>
+              <label><input type="radio" name="q2" value="0"> أيوه، أي موقع HTTPS آمن.</label>
+              <label><input type="radio" name="q2" value="1"> لأ، ده بيشير لاتصال مشفر ولا يثبت مصداقية الموقع.</label>
+            </div>
+
+            <div class="quiz-question">
+              <p>3. حد طلب منك كود التحقق اللي وصلك في رسالة. تعمل إيه؟</p>
+              <label><input type="radio" name="q3" value="1"> ما أشاركوش مع أي حد.</label>
+              <label><input type="radio" name="q3" value="0"> أبعته لو الشخص قال إنه من الدعم.</label>
+            </div>
+
+            <div class="quiz-question">
+              <p>4. إيه أفضل طريقة للوصول لخدمة البنك؟</p>
+              <label><input type="radio" name="q4" value="0"> الضغط على أي رابط وصلني في رسالة.</label>
+              <label><input type="radio" name="q4" value="1"> استخدام التطبيق الرسمي أو كتابة العنوان المعروف بنفسي.</label>
+            </div>
+
+            <button class="btn btn-primary" type="submit">اعرف نتيجتك</button>
+            <div id="quizResult" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div><strong>AFEONA THE MOTAMRD</strong> — CYBER AWARENESS</div>
+      <p>التعلّم والحماية مسؤولية الجميع.</p>
+      <p>هذه الصفحة لا تجمع كلمات مرور أو رموز تحقق، ولا ترسل بيانات الفحص إلى خادم خارجي.</p>
+      <p>© <span id="year"></span> AFEONA. جميع الحقوق محفوظة.</p>
+    </div>
+  </footer>
+
+  <script>
+    "use strict";
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    const scanForm = document.getElementById("scanForm");
+    const urlInput = document.getElementById("urlInput");
+    const result = document.getElementById("result");
+
+    scanForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      const raw = urlInput.value.trim();
+      let parsed;
+
+      try {
+        parsed = new URL(raw);
+      } catch {
+        showResult("warning", "تعذّر تحليل الرابط",
+          ["تأكد من كتابة عنوان صحيح يبدأ بـ https:// أو http://"]);
+        return;
+      }
+
+      if (!["http:", "https:"].includes(parsed.protocol)) {
+        showResult("danger", "نوع الرابط غير مدعوم",
+          ["استخدم رابط ويب يبدأ بـ http:// أو https://"]);
+        return;
+      }
+
+      const host = parsed.hostname.toLowerCase();
+      const flags = [];
+
+      if (parsed.protocol !== "https:") {
+        flags.push("الرابط لا يستخدم HTTPS.");
+      }
+
+      if (parsed.username || parsed.password || raw.includes("@")) {
+        flags.push("وجود بيانات دخول أو علامة @ قد يُستخدم لإخفاء الوجهة الحقيقية.");
+      }
+
+      if (host.startsWith("xn--") || host.includes(".xn--")) {
+        flags.push("النطاق يحتوي على صيغة Punycode؛ راجع الحروف واسم الموقع بعناية.");
+      }
+
+      if (/^\d{1,3}(\.\d{1,3}){3}$/.test(host)) {
+        flags.push("الرابط يستخدم عنوان IP بدل اسم نطاق معتاد.");
+      }
+
+      if (host.split(".").length >= 5) {
+        flags.push("اسم النطاق يحتوي على مستويات كثيرة؛ تحقق من النطاق الأساسي.");
+      }
+
+      const suspiciousWords =
+        /(login|verify|secure|account|update|gift|free|wallet|password)/i;
+
+      if (suspiciousWords.test(host)) {
+        flags.push("اسم النطاق يحتوي على كلمات قد تظهر في روابط التصيد. وجودها وحده لا يثبت الخطر.");
+      }
+
+      if (host.length > 45) {
+        flags.push("اسم النطاق طويل بصورة تستحق المراجعة.");
+      }
+
+      if (flags.length === 0) {
+        showResult("safe", "لم تظهر مؤشرات شكلية واضحة",
+          [
+            "ده لا يعني إن الرابط آمن.",
+            "تأكد إن اسم النطاق هو الموقع الرسمي قبل تسجيل الدخول أو الدفع."
+          ]);
+      } else {
+        showResult("warning", "ظهرت مؤشرات تستحق الانتباه",
+          flags.concat([
+            "لا تدخل كلمات مرور أو بيانات دفع قبل التحقق من مصدر الرابط."
+          ]));
+      }
+    });
+
+    function showResult(type, title, messages) {
+      result.replaceChildren();
+      result.style.display = "block";
+
+      const heading = document.createElement("h4");
+      heading.className = type;
+      heading.textContent = title;
+      result.appendChild(heading);
+
+      const list = document.createElement("ul");
+
+      messages.forEach(function (message) {
+        const item = document.createElement("li");
+        item.textContent = message;
+        list.appendChild(item);
+      });
+
+      result.appendChild(list);
+    }
+
+    document.getElementById("quizForm")
+      .addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const answers = ["q1", "q2", "q3", "q4"];
+        let score = 0;
+        let answered = 0;
+
+        answers.forEach(function (name) {
+          const selected = document.querySelector(
+            'input[name="' + name + '"]:checked'
+          );
+
+          if (selected) {
+            answered++;
+            if (selected.value === "1") score++;
+          }
+        });
+
+        const output = document.getElementById("quizResult");
+
+        if (answered < answers.length) {
+          output.textContent = "جاوب على الأسئلة الأربعة الأول عشان تظهر نتيجتك.";
+          output.className = "warning";
+          return;
+        }
+
+        output.textContent =
+          "نتيجتك: " + score + " من 4. " +
+          (score === 4
+            ? "ممتاز! عندك أساس قوي في الوعي الرقمي."
+            : score >= 2
+              ? "كويس! راجع النصائح وحاول مرة تانية."
+              : "راجع قسم التوعية وحاول تاني؛ الحذر الرقمي مهم.");
+
+        output.className = score >= 3 ? "safe" : "warning";
+      });
+  </script>
+</body>
+</html>
